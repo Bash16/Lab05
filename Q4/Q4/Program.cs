@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Examples
+namespace Q4
 {
     class Program
     {
