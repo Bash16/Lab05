@@ -6,20 +6,22 @@ namespace Q3
     {
         static void Main(string[] args)
         {
-            string s = "Hello and welcome to this demo!";
+            Console.Write("Enter any string(sentence): ");
+            string s = Console.ReadLine();
+
             string[] arrayS = Extract(s);
 
             Console.Write("Words of length between 4 to 5 and contains vowels: " );
             for (int i = 0; i < arrayS.Length; i++)
             {
-                Console.Write("{0} ", arrayS[i]);
+                Console.Write(arrayS[i] + "{0}", i < arrayS.Length - 1 ? ", " : "");
             }
             Console.WriteLine();
         }
         private static string[] Extract(string s)
         {
             string[] words = s.Split();
-            string[] result = null;
+            string[] result = new string[words.Length];
 
             int j = 0;
             for (int i = 0; i < words.Length; i++)
@@ -37,12 +39,14 @@ namespace Q3
                 if (vowelCount > 0 && (count == 5 || count == 4))
                 {
                     result[j] = words[i];
-                 //   j = j + 1;
+                    j = j + 1;
                 }
-  
             }
 
-            return result;
+            string[] finalResult = new string[j];
+            Array.Copy(result, finalResult, j);
+
+            return finalResult;
         }
     }
 }
